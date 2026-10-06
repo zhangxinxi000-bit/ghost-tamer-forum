@@ -1,0 +1,17 @@
+# 一键启动本地 PostgreSQL(数据持久化在 docker volume 中)
+# 用法:docker compose up -d
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: ghost-forum-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ghost_forum
+    ports:
+      - '5432:5432'
+    volumes:
+      - ghost_forum_pgdata:/var/lib/postgresql/data
+
+volumes:
+  ghost_forum_pgdata:

@@ -1,0 +1,28 @@
+/* Tailwind CSS v4 入口:关闭自动内容探测,显式扫描 client/src */
+@import 'tailwindcss' source(none);
+@import 'tw-animate-css';
+@import './tailwind-theme.css';
+@import './typography.css';
+
+/* 显式扫描本目录(替代 tailwind 的自动内容探测) */
+@source './';
+
+/* 深色为唯一主题(见 client/index.html 的 <html class="dark">) */
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
